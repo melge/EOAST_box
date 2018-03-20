@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>box</title>
+		<meta name="author" content="Kushagra Gour">
+		<meta name="description" content="Super charge your input placeholders">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="image_src" href="/assets/superplaceholder.png"/>
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+		<link href='style.css' rel='stylesheet' type='text/css'>
+		<style>
+		
+		</style>
+	</head>
+	<body>
+		<div class="main-title-wrap">
+			
+			<h1 class="main-title">电光科协悄悄话</h1>
+		</div>
+		<h2 class="main-sub-title">互动啦互动啦！<br>科协悄悄话每周一到周五开启匿名投递<br>科协团队将认真回复所有留言<br>并在线上线下反馈给大家！</h2>
+		
+
+		<h3>少年，你想对谁说？</h3>
+		<div class="flexbox">
+			<div class="flexitem">主席团<input name="1" type="checkbox" value="checkbox" checked="checked" /></div>
+			<div class="flexitem">电子部<input name="2" type="checkbox" value="checkbox" checked="checked" /></div>
+			<div class="flexitem">计算机部<input name="3" type="checkbox" value="checkbox" checked="checked" /></div>
+			<div class="flexitem">媒宣部<input name="4" type="checkbox" value="checkbox" checked="checked" /></div>
+			<div class="flexitem">办公室<input name="5" type="checkbox" value="checkbox" checked="checked" /></div>
+			<div class="flexitem">全体部员<input name="6" type="checkbox" value="checkbox" checked="checked" /></div>		
+		</div>
+		
+		<h3>说你想说，通通可以。</h3>
+		<form name="text_form" action="success.html" method="post">
+		<div class="row">
+			<label>吐槽、表白、建议:</label>
+			<input id="inp3" type="text" value="" placeholder="可选填">
+		</div>
+
+		<div class="row">
+			<label>心灵求助、谈谈人生:</label>
+			<input id="inp1" type="text" value="" placeholder="可选填">
+		</div>
+		<div class="row">
+			<label>例课反馈、技术疑问:</label>
+			<input id="inp2" type="text" value="" placeholder="可选填">
+		</div>
+		<button class="btn  download-btn" type="submit" onclick="beforeSubmit()"> 提交 </button>
+		</form>
+
+		<footer>
+			copyright&nbsp©&nbspEOAST 
+		</footer>
+		<script src="src/superplaceholder.js"></script>
+		<script>
+		superplaceholder({
+			el: inp1,
+			sentences: [ '心灵求助', '谈谈人生' ],
+			options: {
+				loop: true,
+				startOnFocus: false
+			}
+		})
+
+		superplaceholder({
+			el: inp2,
+			sentences: [ '例课反馈', '技术疑问'],
+			options: {
+				loop: true,
+				
+				startOnFocus: false
+			}
+		})
+
+		superplaceholder({
+			el: inp3,
+			sentences: [ '吐槽', '表白', '建议'],
+			options: {
+				
+				loop: true,
+				startOnFocus: false
+			}
+		})
+		function beforeSubmit() {
+	        
+	        // 创建一个FormData对象，直接把我们的表单传进去  
+	        var formData = new FormData(document.forms.namedItem("text_form"));
+	        
+	        var xmlHttpRequest = new XMLHttpRequest();
+	        
+	        xmlHttpRequest.open('post', '/后端地址');
+	        xmlHttpRequest.onload = function(resp) {
+	            if (xmlHttpRequest.status == 200) {
+	                alert('提交成功！');
+	            } else {
+	                alert('Error:' + xmlHttpRequest.status);
+	            }
+	        };
+	        xmlHttpRequest.send(formData);
+	    }
+		</script>
+
+	</body>
+</html>
